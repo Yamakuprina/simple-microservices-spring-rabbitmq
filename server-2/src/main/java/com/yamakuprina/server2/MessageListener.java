@@ -8,7 +8,8 @@ public class MessageListener {
 
     @RabbitListener(queues = MQConfig.QUEUE)
     public CustomMessage customMessage(CustomMessage customMessage){
-        customMessage.setMessage("Listener 2 works");
+        String oldMessage = customMessage.getMessage();
+        customMessage.setMessage(oldMessage + " Server-2 is working.");
         return customMessage;
     }
 }
